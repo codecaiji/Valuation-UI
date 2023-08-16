@@ -116,7 +116,8 @@
                         v-model="rangeConfig.targetName"
                         :fetch-suggestions="queryParamsName"
                         :trigger-on-focus="false"
-                        placeholder="对象名">
+                        placeholder="对象名"
+                        @blur="rangeConfigBlur(index)">
                     </el-autocomplete>
                   </el-form-item>
                 </el-col>

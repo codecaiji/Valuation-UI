@@ -238,10 +238,9 @@ export default {
       })
     },
     async statusChange(status, id) {
-      console.log("status change: " + status + ' id: ' + id)
       const {data: res} = await this.$http.put('/valuation-configs/' + id + '/change-status', null,{
         params: {status: status}
-    })
+      })
       if (res.code !== 0) return this.$message.error('状态修改失败！' + res.msg)
     },
 
