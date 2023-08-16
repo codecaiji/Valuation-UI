@@ -476,7 +476,7 @@ export default {
             this.configDetail.attriConfigs.splice(acIndex, 1)
           }
           let nextTab = this.configDetail.attriConfigs[acIndex] || this.configDetail.attriConfigs[acIndex - 1]
-          this.attriEditableTabName = nextTab.name
+          if (nextTab) this.attriEditableTabName = nextTab.name
           this.$message.success('已删除属性标签：' + targetName)
         }).catch(() => {
           //配置点击取消按钮
