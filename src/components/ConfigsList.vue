@@ -122,7 +122,7 @@
               :before-upload="beforeUpload"
               :on-success="onUploadSuccess"
               :on-error="onUploadError"
-              :on-change="handleChange"
+              :on-change="uploadChange"
               class="upload-container"
               :with-credentials="true"
               ref="uploadRef">
@@ -165,18 +165,6 @@ export default {
       // 要采集的配置的信息对象
       configCreateForm: {
         name: '',
-        attriConfigs: [{
-          name: '',
-          fieldScores: []
-        }],
-        rangeConfigs: [{
-          targetName: '',
-          func:''
-        }],
-        compuFormulas: [{
-          targetName: '',
-          func:''
-        }],
         description:"",
         status: ''
       },
@@ -313,6 +301,10 @@ export default {
       this.multipleSelection = val;
       console.log(`selectChange: ${val}`)
     },
+    //选中复选框
+    checkSelect(data){
+      console.log(`选中项数据：${data}`)
+    },
 
     // 上传
     beforeUpload(file) {
@@ -336,7 +328,7 @@ export default {
     onUploadError(err) {
       this.$message.error('文件上传失败!' + err)
     },
-    handleChange(file, fileList) {
+    uploadChange(file, fileList) {
       this.fileList = fileList.slice(-this.fileLimit);
     },
     // 按配置计算上传的表格
@@ -381,11 +373,6 @@ export default {
       const blob = new Blob(byteArrays, { type: contentType });
       return blob;
     },
-
-    //选中复选框
-    checkSelect(data){
-      console.log(`选中项数据：${data}`)
-    }
   },
 }
 </script>
